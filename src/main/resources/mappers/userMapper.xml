@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.userMapper">
+	<!-- email이랑 password같은 row 개수 리턴하는거(login) -->
+	<select id="getUser" resultType="com.stt.domain.AuthVO">
+		select id,name,email from users where email=#{email} and password=#{password}
+	</select>
+	<!-- 등록된 email인지 확인 -->
+	<select id="getRegistedEmailNums" resultType="int">
+		select count(*) from users where email=#{email} and id>0
+	</select>
+	<!-- insert문 -->
+	<insert id="insert">
+		insert into users(name,email,password) values(#{name},#{email},#{password})
+	</insert>
+	<!-- username, password 업데이트 -->
+	<update id="update">
+		update users set name=#{name}, password=#{password} where id=#{id}
+	</update>	
+	<!-- 해당 id가진 유저 삭제 -->
+	<delete id="delete">
+		delete from users where id=#{id}
+	</delete>
+</mapper>
