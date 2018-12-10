@@ -9,6 +9,9 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
+	<!-- Root URL Mapping -->
+	<mvc:view-controller path="/" view-name="home"/>
+	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource" 
 	destroy-method="close">
