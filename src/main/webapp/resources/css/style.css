@@ -44,3 +44,11 @@ body {
     }
 }
 
+.nav-color {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#01b0cf+0,3eb1ce+16,5abfdb+33,aacede+50,ecd9dd+80,ecd9dd+92,e0c9cf+100 */
+	background: rgb(1,176,207); /* Old browsers */
+	background: -moz-linear-gradient(left, rgb(1,176,207) 0%, rgb(62,177,206) 16%, rgb(90,191,219) 33%, rgb(170,206,222) 50%, rgb(236,217,221) 80%, rgb(236,217,221) 92%, rgb(224,201,207) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, rgb(1,176,207) 0%,rgb(62,177,206) 16%,rgb(90,191,219) 33%,rgb(170,206,222) 50%,rgb(236,217,221) 80%,rgb(236,217,221) 92%,rgb(224,201,207) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, rgb(1,176,207) 0%,rgb(62,177,206) 16%,rgb(90,191,219) 33%,rgb(170,206,222) 50%,rgb(236,217,221) 80%,rgb(236,217,221) 92%,rgb(224,201,207) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01b0cf', endColorstr='#e0c9cf',GradientType=1 ); /* IE6-9 */
+}

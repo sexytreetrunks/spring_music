@@ -20,7 +20,7 @@ h5 {
 </style>
 <c:choose>
 	<c:when test="${user eq null}">
-		<div style="height:75vh">
+		<div style="height:100vh">
 			<!-- Mask & flexbox options-->
 			<div class="d-flex justify-content-center align-items-center h-100">
 				<!-- Content -->
@@ -53,7 +53,7 @@ h5 {
 		<!-- Full Page Intro -->
 	</c:when>
 	<c:otherwise>
-		<div class="d-flex justify-content-center">
+		<div class="d-flex justify-content-center" style="padding-top:40px">
 		<div class="container col-lg-9" style="background-color:rgba(255,255,255,0.95)">
 			<!-- Section: Blog v.1 -->
 			<section class="my-5 wow fadeInDown">

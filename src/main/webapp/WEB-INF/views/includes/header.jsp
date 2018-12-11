@@ -19,7 +19,7 @@
 
 <body>
 	<header>
-		<nav class="navbar fixed-top sticky-top navbar-expand-lg navbar-dark scrolling-navbar">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark nav-color">
 			<a class="navbar-brand" href="/"><img src="/resources/img/logo.png" class="img-fluid flex-center logo-img"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
