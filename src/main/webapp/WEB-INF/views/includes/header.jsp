@@ -18,9 +18,8 @@
 </head>
 
 <body>
-
-	<div id="wrapper">
-		<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+	<header>
+		<nav class="navbar fixed-top sticky-top navbar-expand-lg navbar-dark scrolling-navbar">
 			<a class="navbar-brand" href="/"><img src="/resources/img/logo.png" class="img-fluid flex-center logo-img"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -33,9 +32,10 @@
 					<li class="nav-item active"><a class="nav-link" href="#">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Chart</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+					<li class="nav-item"><a class="nav-link" href="/chart">Chart</a></li>
+					<li class="nav-item"><a class="nav-link" href="/new">New</a></li>
+					<li class="nav-item"><a class="nav-link" href="/collection">Collection</a></li>
+					<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0 ml-auto" method="post" action="/search">
@@ -46,6 +46,4 @@
 				</form>
 			</div>
 		</nav>
-
-
-		<div id="page-wrapper">
+	</header>
