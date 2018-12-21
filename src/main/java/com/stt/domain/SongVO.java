@@ -1,20 +1,16 @@
 package com.stt.domain;
 
-import java.sql.Time;
-
 public class SongVO {
-	private int id;
+	private String uuid;
 	private String title;
-	private int artistid;
-	private Time length;
-	private int albumid;
-	private int count;
-	
-	public int getId() {
-		return id;
+	private String artist;
+	private String length;
+	private String tags;
+	public String getUuid() {
+		return uuid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	public String getTitle() {
 		return title;
@@ -22,33 +18,27 @@ public class SongVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getArtistid() {
-		return artistid;
+	public String getArtist() {
+		return artist;
 	}
-	public void setArtistid(int artistid) {
-		this.artistid = artistid;
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
-	public Time getLength() {
+	public String getLength() {
 		return length;
 	}
-	public void setLength(Time length) {
+	public void setLength(String length) {
 		this.length = length;
 	}
-	public int getAlbumid() {
-		return albumid;
+	public String getTags() {
+		return tags;
 	}
-	public void setAlbumid(int albumid) {
-		this.albumid = albumid;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setTags(String tags) {
+		this.tags = tags;
 	}
 	@Override
 	public String toString() {
-		return "SongVO [id=" + id + ", title=" + title + ", artistid=" + artistid + ", length=" + length + ", albumid="
-				+ albumid + ", count=" + count + "]";
+		return "SongVO [uuid=" + uuid + ", title=" + title + ", artist=" + artist + ", length=" + length + ", tags="
+				+ tags + "]";
 	}
 }

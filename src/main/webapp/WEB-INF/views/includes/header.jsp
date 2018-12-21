@@ -35,7 +35,7 @@
 					<li class="nav-item"><a class="nav-link" href="/chart">Chart</a></li>
 					<li class="nav-item"><a class="nav-link" href="/new">New</a></li>
 					<li class="nav-item"><a class="nav-link" href="/collection">Collection</a></li>
-					<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+					<li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0 ml-auto" method="post" action="/search">
