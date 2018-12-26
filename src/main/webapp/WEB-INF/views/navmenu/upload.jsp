@@ -94,8 +94,8 @@ $(function(){
 })
 function formatTime(duration) {
 	var totalsec = parseInt(duration)
-	var mm = (totalsec/60).toFixed(0)
-	var ss = (totalsec%60).toFixed(0)
-	return (mm==0? '00': mm)+":"+(ss==0? '00':ss)
-}
+	var mm = Math.floor(totalsec/60)
+	var ss = (totalsec%60)
+	return (mm==0? '00': mm)+":"+(ss==0? '00': (ss<10? '0'+ss:ss))
+}	
 </script>

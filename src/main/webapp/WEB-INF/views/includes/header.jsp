@@ -8,7 +8,7 @@
 	  <meta http-equiv="x-ua-compatible" content="ie=edge">
 	  <title>Material Design Bootstrap</title>
 	  <!-- Font Awesome -->
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 	  <!-- Bootstrap core CSS -->
 	  <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 	  <!-- Material Design Bootstrap -->
@@ -36,9 +36,9 @@
 					<li class="nav-item"><a class="nav-link" href="/new">New</a></li>
 					<li class="nav-item"><a class="nav-link" href="/collection">Collection</a></li>
 					<li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
-					</li>
+					
 				</ul>
-				<form class="form-inline my-2 my-lg-0 ml-auto" method="post" action="/search">
+				<form class="form-inline" method="post" action="/search">
 					<input class="form-control" type="search" placeholder="Search"
 						aria-label="Search" name="keyword">
 					<button class="btn btn-outline-white btn-md my-3 my-sm-0 ml-2"

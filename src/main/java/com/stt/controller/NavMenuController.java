@@ -3,16 +3,22 @@ package com.stt.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
+
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.stt.domain.SongVO;
 import com.stt.domain.UploadDTO;
+import com.stt.service.SongService;
 
 import net.coobird.thumbnailator.Thumbnailator;
 
@@ -20,6 +26,9 @@ import net.coobird.thumbnailator.Thumbnailator;
 public class NavMenuController {
 	private static final Logger logger = LoggerFactory.getLogger(NavMenuController.class);
 	private static final String UPLOADPATH = "d:/upload";
+	
+	@Inject
+	private SongService service;
 	
 	@GetMapping("/upload")
 	public String uploadGET() {
@@ -47,6 +56,7 @@ public class NavMenuController {
 				Thumbnailator.createThumbnail(upload.getCover().getInputStream(),out,200,200);
 				out.close();
 			}
+			service.upload(vo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,4 +65,23 @@ public class NavMenuController {
 		return "navmenu/upload";
 	}
 	
+	@GetMapping("/new")
+	public String newGET(Model model) {
+		logger.info("new GET");
+		return "navmenu/new";
+	}
+	
+	@GetMapping("/chart")
+	public String chartGET(Model model) {
+		logger.info("chart GET");
+		List<SongVO> list;
+		try {
+			list = service.getSongList("count");
+			model.addAttribute("list",list);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "navmenu/chart";
+	}
 }

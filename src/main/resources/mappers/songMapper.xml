@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.songMapper">
 	<insert id="insert">
-		INSERT INTO SONGS(uuid,title,artist,length,tags) VALUES(uuid,title,artist,length,tags)
+		INSERT INTO SONGS(uuid,title,artist,length,tags) VALUES(#{uuid},#{title},#{artist},#{length},#{tags})
 	</insert>
-
+	<select id="getList" resultType="com.stt.domain.SongVO">
+		SELECT * FROM SONGS ORDER BY #{orderby} DESC
+	</select>
 </mapper>
