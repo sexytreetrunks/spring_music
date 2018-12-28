@@ -14,8 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.stt.domain.Criteria;
 import com.stt.domain.SongVO;
 import com.stt.domain.UploadDTO;
 import com.stt.service.SongService;
@@ -66,17 +68,31 @@ public class NavMenuController {
 	}
 	
 	@GetMapping("/new")
-	public String newGET(Model model) {
+	public String newGET(Model model,@ModelAttribute("cri")Criteria cri) {
 		logger.info("new GET");
+		List<SongVO> list;
+		try {
+			cri.setOrderby(Criteria.ORDERBY.NEW);
+			list = service.getSongList(cri);
+			for(SongVO s:list) {
+				logger.info(s.getTitle()+","+s.getArtist());
+			}
+			model.addAttribute("list",list);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "navmenu/new";
 	}
 	
 	@GetMapping("/chart")
-	public String chartGET(Model model) {
+	public String chartGET(Model model, @ModelAttribute("cri")Criteria cri) {
 		logger.info("chart GET");
 		List<SongVO> list;
 		try {
-			list = service.getSongList("count");
+			cri.setOrderby(Criteria.ORDERBY.CHART);
+			logger.info(cri.toString());
+			list = service.getSongList(cri);
 			model.addAttribute("list",list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

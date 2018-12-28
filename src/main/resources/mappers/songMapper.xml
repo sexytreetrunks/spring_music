@@ -5,6 +5,18 @@
 		INSERT INTO SONGS(uuid,title,artist,length,tags) VALUES(#{uuid},#{title},#{artist},#{length},#{tags})
 	</insert>
 	<select id="getList" resultType="com.stt.domain.SongVO">
-		SELECT * FROM SONGS ORDER BY #{orderby} DESC
+		SELECT * FROM SONGS 
+		<if test="orderby != null"> <!-- mybatis에선 order by구문에 대해선 preparedStatement파라미터값을 세팅하지 못하도록한다. 이유는 sql인젝션에 노출될 위험이 있기 때문 -->
+			ORDER BY 
+		</if>
+		<choose>
+			<when test="orderby eq 'c'">
+				COUNT
+			</when>
+			<otherwise>
+				REGDATE
+			</otherwise>
+		</choose>
+		DESC limit #{pageStart},#{numPerPage}
 	</select>
 </mapper>

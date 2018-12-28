@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.stt.domain.Criteria;
 import com.stt.domain.SongVO;
 
 @Repository
@@ -22,8 +23,8 @@ public class SongDAOImpl implements SongDAO{
 	}
 
 	@Override
-	public List<SongVO> getList(String orderby) throws Exception {
+	public List<SongVO> getList(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return session.selectList(namespace+".getList", orderby);
+		return session.selectList(namespace+".getList", cri);
 	}
 }

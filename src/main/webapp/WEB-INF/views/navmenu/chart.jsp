@@ -11,6 +11,9 @@ section > ul > li {
 	background-color:white;
 	border-radius:3px;
 }
+div > i {
+	cursor:pointer;
+}
 </style>
 <div class="d-flex justify-content-center" style="padding-top:40px">
 	<section>
@@ -21,7 +24,7 @@ section > ul > li {
 					<div class="container">
 						<div class="row py-2">
 							<div class="col-1 align-self-center text-center">
-								<h1><strong>${status.count}</strong></h1>
+								<h1><strong>${status.count + cri.pageStart}</strong></h1>
 							</div>
 							<div class="col-2 align-self-center">
 								<img src="/cover?filename=${song.uuid}_${song.artist}_${song.title}" class="img-fluid">
@@ -34,14 +37,40 @@ section > ul > li {
 									<h6>${song.artist}</h6>
 								</div>
 							</div>
-							<div class="col-2 align-self-center text-center pr-2">
-								<a><i class="fas fa-play fa-lg"></i></a>
+							<div class="col-3 align-self-center text-center pr-2">
+								<i class="fas fa-play fa-lg pr-5"></i>
+								<i class="fas fa-plus fa-lg addPlaylist"></i>
 							</div>
 						</div>
 					</div>
-				</li>			
+				</li>
 			</c:forEach>
 		</ul>
 	</section>
 </div>
+<%@include file="../includes/playlistModal.jsp" %>
 <%@include file="../includes/footer.jsp" %>
+
+<script>
+$(function(){
+	$(".addPlaylist").click(function(){
+		//.getJSON을 이용하여 playlist 가져오기?
+		$("#playlistModal").modal('show');
+	})
+	$("#playlistModal").on('hidden.bs.modal',function(){
+		$("input[name='newplaylist']").val("")
+	})
+	$("#savePlaylist").click(function(){
+		var activeNavId = $("a.active").attr("id");
+		console.log(activeNavId);
+		console.log($("input[name='newplaylist']").val());
+		//ajax를 이용한 playlist 추가
+	})
+	$(".playlist-img").click(function(){
+		console.log($(this).next().html());
+		$("#playlistModal").modal('hide');
+		//ajax를 이용한 playlist 추가
+	})
+})
+
+</script>

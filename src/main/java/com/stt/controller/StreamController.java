@@ -21,7 +21,7 @@ public class StreamController {
 	@GetMapping("/cover")
 	@ResponseBody
 	public ResponseEntity<byte[]> getCoverImg(String filename) {
-		logger.info("cover get: " + filename);
+		//logger.info("cover get: " + filename);
 		File file = new File(UPLOADPATH+"/cover/"+filename+".jpg");
 		ResponseEntity<byte[]> result = null;
 		try {

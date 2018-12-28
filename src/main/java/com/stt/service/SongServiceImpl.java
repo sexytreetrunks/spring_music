@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.stt.domain.Criteria;
 import com.stt.domain.SongVO;
 import com.stt.persistance.SongDAO;
 
@@ -20,9 +21,9 @@ public class SongServiceImpl implements SongService{
 	}
 
 	@Override
-	public List<SongVO> getSongList(String orderby) throws Exception {
+	public List<SongVO> getSongList(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.getList(orderby);
+		return dao.getList(cri);
 	}
 
 }
