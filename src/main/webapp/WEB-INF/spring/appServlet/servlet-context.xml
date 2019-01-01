@@ -27,4 +27,16 @@
 	<context:component-scan base-package="com.stt.persistance" />
 	<context:component-scan base-package="com.stt.service" />
 	
+	<beans:bean id="auth" class="com.stt.interceptor.AuthCheckIntercepter" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/chart"/>
+			<mapping path="/new"/>
+			<mapping path="/collection"/>
+			<mapping path="/upload"/>
+			<mapping path="/profile"/>
+			<beans:ref bean="auth"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
