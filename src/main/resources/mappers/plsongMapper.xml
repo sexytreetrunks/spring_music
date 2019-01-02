@@ -4,7 +4,13 @@
 	<insert id="insert">
 		insert into pl_songs values(#{playlistId},#{songId})
 	</insert>
-	<delete id="delete">
+	<delete id="deleteOne">
 		delete from pl_songs where playlistId=#{playlistId} and songId=#{songId}
 	</delete>
+	<delete id="deleteAllInPlaylist">
+		delete from pl_songs where playlistId=#{playlistId}
+	</delete>
+	<select id="get" resultType="com.stt.domain.SongVO">
+		select * from songs where uuid=(select songId from pl_songs where playlistId=#{playlistId})
+	</select>
 </mapper>

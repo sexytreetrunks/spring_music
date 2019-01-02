@@ -40,6 +40,7 @@ div > i {
 							<div class="col-3 align-self-center text-center pr-2">
 								<i class="fas fa-play fa-lg pr-5"></i>
 								<i class="fas fa-plus fa-lg addPlaylist"></i>
+								<input type="hidden" value="${song.uuid}" name="songid">
 							</div>
 						</div>
 					</div>
@@ -49,28 +50,66 @@ div > i {
 	</section>
 </div>
 <%@include file="../includes/playlistModal.jsp" %>
+<%@include file="../includes/successModal.jsp" %>
 <%@include file="../includes/footer.jsp" %>
-
+<script src="/resources/js/playlistManager.js"></script>
 <script>
+var songid;
 $(function(){
-	$(".addPlaylist").click(function(){
-		//.getJSON을 이용하여 playlist 가져오기?
+	$(".addPlaylist").click(function(e){
+		songid = $(e.target).siblings("input").val();
+		playlistManager.get(function(result){
+			var html = "";
+			for(var pl of result) {
+				html+=showPlaylist(pl);
+			}
+			$("#addto > div").html(html);
+		});
 		$("#playlistModal").modal('show');
 	})
 	$("#playlistModal").on('hidden.bs.modal',function(){
-		$("input[name='newplaylist']").val("")
+		$("input[name='newplaylist']").val("");
 	})
 	$("#savePlaylist").click(function(){
-		var activeNavId = $("a.active").attr("id");
-		console.log(activeNavId);
-		console.log($("input[name='newplaylist']").val());
-		//ajax를 이용한 playlist 추가
-	})
-	$(".playlist-img").click(function(){
-		console.log($(this).next().html());
-		$("#playlistModal").modal('hide');
-		//ajax를 이용한 playlist 추가
+		var title = $("input[name='newplaylist']").val();
+		var payload = {
+				"hasplaylist":false,
+				"title":title,
+				"songid":songid
+		};
+		playlistManager.addto(payload,function(result){
+			console.log(result);
+			$("#playlistModal").modal('hide');
+			if(result > 0) {
+				$("#successModal").find(".modal-body").html('플레이리스트에 곡이 추가되었습니다');
+				$("#successModal").modal('show');
+			}
+		});
 	})
 })
 
-</script>
+function showPlaylist(pl) {
+	return "<div class='col-4 my-2'>"
+			+"<img class='card-img-top playlist-img' onclick='onClickPlaylist(this)' src='/resources/img/noimage.png'>"
+			+"<input type='hidden' name='playlistid' value='" + pl.id + "'/>"
+			+"<p class='text-center mt-2'>" + pl.title + "</p>"
+			+"</div>";
+}
+function onClickPlaylist(e) {
+	var playlistid = $(e).next().val();
+	var payload = {
+			"hasplaylist":false,
+			"playlistid":playlistid,
+			"songid":songid
+	};
+	playlistManager.addto(payload,function(result){
+		console.log(result);
+		$("#playlistModal").modal('hide');
+		if(result > 0) {
+			$("#successModal").find(".modal-body").html('플레이리스트에 곡이 추가되었습니다');
+			$("#successModal").modal('show');
+		}
+	});
+}
+
+</script> 

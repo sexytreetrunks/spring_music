@@ -37,11 +37,11 @@ public class UserController {
 		String url = "signup";
 		try {
 			if(service.isUsingEmail(dto.getEmail())) {
-				model.addAttribute("error","µî·ÏµÈ ÀÌ¸ŞÀÏÀÔ´Ï´Ù");
+				model.addAttribute("error","ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ ì´ë©”ì¼ì…ë‹ˆë‹¤");
 				return url;
 			}
 			if(!dto.getPassword().equals(dto.getConfirm_password())) {
-				model.addAttribute("error", "ÆĞ½º¿öµå°¡ ÀÏÄ¡ÇÏÁö¾Ê½À´Ï´Ù");
+				model.addAttribute("error", "íŒ¨ìŠ¤ì›Œë“œ í™•ì¸ì´ ë‹¤ë¦…ë‹ˆë‹¤");
 				return url;
 			}
 			service.regist(dto);
@@ -67,7 +67,7 @@ public class UserController {
 				session.setAttribute("user", user);
 				return "redirect:/";
 			} else {
-				model.addAttribute("error", "ÀÌ¸ŞÀÏ È¤Àº ÆĞ½º¿öµå°¡ Àß¸øµÇ¾ú½À´Ï´Ù");
+				model.addAttribute("error", "ì•„ì´ë”” í˜¹ì€ íŒ¨ìŠ¤ì›Œë“œê°€ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

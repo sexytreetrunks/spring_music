@@ -35,34 +35,9 @@
       <div class="modal-body">
 		<div class="tab-content" id="myTabContent">
 		  <div class="tab-pane fade show active" id="addto" role="tabpanel" aria-labelledby="addto-tab">
-		  <!-- ajax로 playlist 가져오기 없으면 플레이리스트가 없습니다라고 뜨게 하기 -->
-			  <div class="row">
-			  		<!-- 클릭한곳 image overlay -->
-					<div class="col-4 my-2">
-						<img class="card-img-top playlist-img" src="/resources/img/noimage.png" >
-						<p class="text-center mt-2">playlist name1</p>
-					</div>
-					<div class="col-4 my-2">
-						<img class="card-img-top playlist-img" src="/resources/img/noimage.png" >
-						<p class="text-center mt-2">playlist name2</p>
-					</div>
-					<div class="col-4 my-2">
-						<img class="card-img-top playlist-img" src="/resources/img/noimage.png" >
-						<p class="text-center mt-2">playlist name3</p>
-					</div>
-					<div class="col-4 my-2">
-						<img class="card-img-top playlist-img" src="/resources/img/noimage.png" >
-						<p class="text-center mt-2">playlist name4</p>
-					</div>
-					<div class="col-4 my-2">
-						<img class="card-img-top playlist-img" src="/resources/img/noimage.png" >
-						<p class="text-center mt-2">playlist name5</p>
-					</div>
-					<div class="col-4 my-2">
-						<img class="card-img-top playlist-img" src="/resources/img/noimage.png" >
-						<p class="text-center mt-2">playlist name6</p>
-					</div>
-				</div>
+			<div class="row">
+				
+			</div>
 		  </div>
 		  <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
 			<div class="form-group">
