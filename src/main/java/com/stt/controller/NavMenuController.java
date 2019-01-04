@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.stt.domain.AuthVO;
 import com.stt.domain.Criteria;
@@ -50,7 +51,7 @@ public class NavMenuController {
 	}
 	
 	@PostMapping("/upload")
-	public String uploadPOST(UploadDTO upload) {
+	public String uploadPOST(UploadDTO upload, RedirectAttributes attr) {
 		logger.info("upload POST: " + upload.toString());
 		UUID uuid = UUID.randomUUID();
 		SongVO vo = new SongVO();
@@ -74,8 +75,8 @@ public class NavMenuController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return "navmenu/upload";
+		attr.addFlashAttribute("result", "success");
+		return "redirect:/upload";
 	}
 	
 	@GetMapping("/new")

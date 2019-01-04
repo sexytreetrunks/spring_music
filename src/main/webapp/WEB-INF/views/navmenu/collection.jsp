@@ -30,7 +30,6 @@
 <script>
 $(function(){
 	var result = $("input[name='result']").val();
-	console.log(result);
 	if(result ==='success') {
 		$("#successModal").find(".modal-body").html("플레이리스트가 삭제되었습니다");
 		$("#successModal").modal("show");

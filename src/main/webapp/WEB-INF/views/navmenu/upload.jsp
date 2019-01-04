@@ -50,13 +50,22 @@
 					<button type="submit" class="btn btn-cyan">Upload</button>
 				</div>
 			</form>
+			<input type="hidden" name="result" value="${result}">
 		</section>
 	</div>
 </div>
 <%@include file="../includes/basicModal.jsp"%>
+<%@include file="../includes/successModal.jsp"%>
 <%@include file="../includes/footer.jsp" %>
 <script>
 $(function(){
+	var result = $("input[name='result']").val();
+	console.log(result);
+	if(result ==='success') {
+		$("#successModal").find(".modal-body").html("곡이 업로드 되었습니다.");
+		$("#successModal").modal("show");
+	}
+	
 	var audio = new Audio()
 	audio.addEventListener('loadedmetadata',function(){
 		$("input[name='length']").val(formatTime(audio.duration))
