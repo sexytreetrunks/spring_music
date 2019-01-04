@@ -36,7 +36,11 @@
 		<div class="tab-content" id="myTabContent">
 		  <div class="tab-pane fade show active" id="addto" role="tabpanel" aria-labelledby="addto-tab">
 			<div class="row">
-				
+				<div class="col">
+					<h5 class="text-uppercase text-center">
+						have no playlist yet
+					</h5>
+				</div>
 			</div>
 		  </div>
 		  <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">

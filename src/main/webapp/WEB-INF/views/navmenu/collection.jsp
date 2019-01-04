@@ -6,22 +6,31 @@
 <div class="container justify-content-center" style="padding-top:40px">
 <section>
 	<h2 class="my-5 text-center white-text display-1">My Collection</h2>
-	<div class="container">
-		<div class="row">
-			<c:forEach var="pl" items="${list}">
-				<div class="col-lg-3 col-sm-4 my-4">
-					<div class="view overlay">
-						<img class="card-img-top img-round" src="/cover?filename=${pl.cover}" onerror="this.src='/resources/img/noimage.png'">
-						<div class="mask flex-center rgba-stylish-strong">
-							<a><i class="fas fa-play fa-4x white-text"></i></a>
+	<c:choose>
+		<c:when test="${empty list}">
+			<h5 class="text-uppercase white-text text-center">
+				<strong>have no playlist yet</strong>
+			</h5>
+		</c:when>
+		<c:otherwise>
+			<div class="container">
+				<div class="row">
+					<c:forEach var="pl" items="${list}">
+						<div class="col-lg-3 col-sm-4 my-4">
+							<div class="view overlay">
+								<img class="card-img-top img-round" src="/cover?filename=${pl.cover}" onerror="this.src='/resources/img/noimage.png'">
+								<div class="mask flex-center rgba-stylish-strong">
+									<a><i class="fas fa-play fa-4x white-text"></i></a>
+								</div>
+							</div>
+							<!-- Card content -->
+							<p class="text-center mt-2 white-text"><a href="/plsongs/${pl.id}">${pl.title}</a></p>
 						</div>
-					</div>
-					<!-- Card content -->
-					<p class="text-center mt-2 white-text"><a href="/plsongs/${pl.id}">${pl.title}</a></p>
+					</c:forEach>
 				</div>
-			</c:forEach>
-		</div>
-	</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 </section>
 <input type="hidden" name="result" value="${param.result}">
 </div>

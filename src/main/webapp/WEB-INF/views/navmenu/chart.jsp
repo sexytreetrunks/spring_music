@@ -59,11 +59,13 @@ $(function(){
 	$(".addPlaylist").click(function(e){
 		songid = $(e.target).closest("li").attr("id");
 		playlistManager.get(function(result){
-			var html = "";
-			for(var pl of result) {
-				html+=showPlaylist(pl);
+			if(result.length > 0) {
+				var html = "";
+				for(var pl of result) {
+					html+=showPlaylist(pl);
+				}
+				$("#addto > div").html(html);				
 			}
-			$("#addto > div").html(html);
 		});
 		$("#playlistModal").modal('show');
 	})
