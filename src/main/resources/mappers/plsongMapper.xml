@@ -7,10 +7,10 @@
 	<delete id="deleteOne">
 		delete from pl_songs where playlistId=#{playlistId} and songId=#{songId}
 	</delete>
-	<delete id="deleteAllInPlaylist">
+	<delete id="deleteAll">
 		delete from pl_songs where playlistId=#{playlistId}
 	</delete>
 	<select id="get" resultType="com.stt.domain.SongVO">
-		select * from songs where uuid=(select songId from pl_songs where playlistId=#{playlistId})
+		select * from songs a1 right join (select songId from pl_songs where playlistId=#{playlistId}) b1 on a1.uuid=b1.songId
 	</select>
 </mapper>

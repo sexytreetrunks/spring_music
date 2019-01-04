@@ -20,14 +20,14 @@ div > i {
 		<h2 class="my-5 text-center white-text display-1">Top 100 Chart!</h2>
 		<ul>
 			<c:forEach var="song" items="${list}" varStatus="status">
-				<li class="m-4">
+				<li class="m-4" id="${song.uuid}">
 					<div class="container">
 						<div class="row py-2">
 							<div class="col-1 align-self-center text-center">
 								<h1><strong>${status.count + cri.pageStart}</strong></h1>
 							</div>
 							<div class="col-2 align-self-center">
-								<img src="/cover?filename=${song.uuid}_${song.artist}_${song.title}" class="img-fluid">
+								<img src="/cover?filename=${song.uuid}_${song.artist}_${song.title}" class="img-fluid" alt="coverimg">
 							</div>
 							<div class="col pl-4">
 								<div class="row pt-2">
@@ -40,7 +40,6 @@ div > i {
 							<div class="col-3 align-self-center text-center pr-2">
 								<i class="fas fa-play fa-lg pr-5"></i>
 								<i class="fas fa-plus fa-lg addPlaylist"></i>
-								<input type="hidden" value="${song.uuid}" name="songid">
 							</div>
 						</div>
 					</div>
@@ -55,9 +54,10 @@ div > i {
 <script src="/resources/js/playlistManager.js"></script>
 <script>
 var songid;
+var cover;
 $(function(){
 	$(".addPlaylist").click(function(e){
-		songid = $(e.target).siblings("input").val();
+		songid = $(e.target).closest("li").attr("id");
 		playlistManager.get(function(result){
 			var html = "";
 			for(var pl of result) {
@@ -72,25 +72,27 @@ $(function(){
 	})
 	$("#savePlaylist").click(function(){
 		var title = $("input[name='newplaylist']").val();
-		var payload = {
+		cover = $("#"+songid).find("img[alt='coverimg']").attr('src');
+		var idx = cover.indexOf("=");
+  		var payload = {
 				"hasplaylist":false,
 				"title":title,
-				"songid":songid
+				"songid":songid,
+				"cover":cover.substring(idx+1)
 		};
 		playlistManager.addto(payload,function(result){
-			console.log(result);
 			$("#playlistModal").modal('hide');
 			if(result > 0) {
 				$("#successModal").find(".modal-body").html('플레이리스트에 곡이 추가되었습니다');
 				$("#successModal").modal('show');
 			}
-		});
+		});  
 	})
 })
 
 function showPlaylist(pl) {
 	return "<div class='col-4 my-2'>"
-			+"<img class='card-img-top playlist-img' onclick='onClickPlaylist(this)' src='/resources/img/noimage.png'>"
+			+"<img class='card-img-top playlist-img' onclick='onClickPlaylist(this)' src='/cover?filename=" +pl.cover+"' onerror=\"src=\'/resources/img/noimage.png\'\"'>"
 			+"<input type='hidden' name='playlistid' value='" + pl.id + "'/>"
 			+"<p class='text-center mt-2'>" + pl.title + "</p>"
 			+"</div>";
@@ -98,7 +100,7 @@ function showPlaylist(pl) {
 function onClickPlaylist(e) {
 	var playlistid = $(e).next().val();
 	var payload = {
-			"hasplaylist":false,
+			"hasplaylist":true,
 			"playlistid":playlistid,
 			"songid":songid
 	};

@@ -12,9 +12,21 @@
 	        ${error }
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="confirm-no">Close</button>
+	        <button type="button" class="btn btn-cyan" style="display:none" id="confirm-yes">Yes</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	<!-- Modal -->
+	
+<script>
+var modalConfirm = function(callback){
+	$("#confirm-yes").on("click",function(){
+		callback(true);
+	});
+	$("#confirm-no").on("click",function(){
+		callback(false);
+	});
+};
+</script>

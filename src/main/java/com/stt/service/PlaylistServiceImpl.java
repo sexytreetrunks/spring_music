@@ -31,15 +31,19 @@ public class PlaylistServiceImpl implements PlaylistService{
 	@Override
 	@Transactional
 	public int remove(int id) throws Exception {
-		int result = 0;
-		result = dao.delete(id);
-		result = result & ((plsdao.deleteAllInPlaylist(id)> 0)? 1:0);
+		plsdao.deleteAllInPlaylist(id);
 		return dao.delete(id);
 	}
 
 	@Override
-	public List<PlaylistVO> getPlaylists(int owner) throws Exception {
-		return dao.get(owner);
+	public List<PlaylistVO> getAll(int owner) throws Exception {
+		return dao.getAll(owner);
+	}
+
+	@Override
+	public PlaylistVO getOne(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getOne(id);
 	}
 
 }

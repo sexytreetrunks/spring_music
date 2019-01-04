@@ -2,10 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.playlistMapper">
 	<insert id="insert">
-		insert into playlists(owner,title) values(#{owner},#{title})
+		insert into playlists(owner,title,cover) values(#{owner},#{title},#{cover})
 	</insert>
-	<select id="get" resultType="com.stt.domain.PlaylistVO">
+	<select id="getAll" resultType="com.stt.domain.PlaylistVO">
 		select * from playlists where owner=#{owner}
+	</select>
+	<select id="getOne" resultType="com.stt.domain.PlaylistVO">
+		select * from playlists where id=#{id}
 	</select>
 	<delete id="delete">
 		delete from playlists where id=#{id}

@@ -23,9 +23,9 @@ public class PlaylistDAOImpl implements PlaylistDAO{
 	}
 
 	@Override
-	public List<PlaylistVO> get(int owner) throws Exception {
+	public List<PlaylistVO> getAll(int owner) throws Exception {
 		// TODO Auto-generated method stub
-		return session.selectList(namespace+".get",owner);
+		return session.selectList(namespace+".getAll",owner);
 	}
 
 	@Override
@@ -38,6 +38,12 @@ public class PlaylistDAOImpl implements PlaylistDAO{
 	public int lastInsertId() throws Exception {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace+".getLastId");
+	}
+
+	@Override
+	public PlaylistVO getOne(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".getOne",id);
 	}
 
 }

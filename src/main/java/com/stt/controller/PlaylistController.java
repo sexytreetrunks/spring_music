@@ -50,10 +50,11 @@ public class PlaylistController {
 		
 		boolean hasplaylist = (Boolean) payload.get("hasplaylist");
 		String songid = (String)payload.get("songid");
-		if(hasplaylist) {
+		if(!hasplaylist) {
 			PlaylistVO vo = new PlaylistVO();
 			vo.setOwner(user.getId());
 			vo.setTitle((String)payload.get("title"));
+			vo.setCover((String)payload.get("cover"));
 			try {
 				result = plservice.create(vo, songid);
 			} catch (Exception e) {
@@ -79,7 +80,7 @@ public class PlaylistController {
 		if(user==null)
 			return new ResponseEntity<List<PlaylistVO>>(HttpStatus.UNAUTHORIZED);
 		try {
-			list = plservice.getPlaylists(user.getId());
+			list = plservice.getAll(user.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,11 +103,9 @@ public class PlaylistController {
 		return new ResponseEntity<List<SongVO>>(list,HttpStatus.OK);
 	}
 	
-	//아래 두개는 경로가 겹쳐서 안될듯. payload여부에따라 동작 다르게하도록 합치기
-	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(value="/{playlistid}")
 	public int deletePlaylist(@PathVariable int playlistid) {
-		logger.info("delete playlist");
+		logger.info("delete playlist: "+playlistid);
 		int result = 0;
 		try {
 			result = plservice.remove(playlistid);
@@ -117,7 +116,6 @@ public class PlaylistController {
 		return result;
 	}
 	
-	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(value="/{playlistid}/{songid}")
 	public int deletePLSong(@PathVariable int playlistid, @PathVariable String songid) {
 		logger.info("delete playlist");

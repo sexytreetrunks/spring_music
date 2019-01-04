@@ -11,5 +11,19 @@ var playlistManager = {
 				contentType:"application/json;charset=utf-8",
 				success:callback
 			});
+		},
+		removeAll:function(playlistId,callback) {
+			$.ajax({
+				type:'delete',
+				url:'/playlist/'+playlistId,
+				success:callback
+			})
+		},
+		removeOne:function(playlistId,songId,callback) {
+			$.ajax({
+				type:'delete',
+				url:'/playlist/'+playlistId + '/' + songId,
+				success:callback
+			})
 		}
 }
