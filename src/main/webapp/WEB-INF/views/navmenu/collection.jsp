@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="../includes/header.jsp" %>
 
-<div class="container justify-content-center" style="padding-top:40px">
+<div class="container justify-content-center container-main">
 <section>
 	<h2 class="my-5 text-center white-text display-1">My Collection</h2>
 	<c:choose>
@@ -24,7 +24,7 @@
 								</div>
 							</div>
 							<!-- Card content -->
-							<p class="text-center mt-2 white-text"><a href="/plsongs/${pl.id}">${pl.title}</a></p>
+							<p class="text-center mt-2 white-text "><a href="/plsongs/${pl.id}" style="color:white"><strong>${pl.title}</strong></a></p>
 						</div>
 					</c:forEach>
 				</div>

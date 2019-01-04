@@ -4,18 +4,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@include file="../includes/header.jsp" %>
 <style>
-ul {
-	list-style:none;
-}
-section > ul > li {
-	background-color:white;
-	border-radius:3px;
-}
 .card {
 	background-color: rgba(0,0,0,.4)
 }
 </style>
-<div class="d-flex justify-content-center" style="padding-top:40px">
+<div class="d-flex justify-content-center container-main">
 	<section>
 		<h2 class="my-5 text-center white-text display-1">Explore New Song!</h2>
 		<div class="container">

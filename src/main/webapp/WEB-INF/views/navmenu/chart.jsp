@@ -15,7 +15,7 @@ div > i {
 	cursor:pointer;
 }
 </style>
-<div class="d-flex justify-content-center" style="padding-top:40px">
+<div class="d-flex justify-content-center container-main">
 	<section>
 		<h2 class="my-5 text-center white-text display-1">Top 100 Chart!</h2>
 		<ul>

@@ -3,10 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@include file="../includes/header.jsp" %>
-<div class="d-flex justify-content-center" style="padding-top:40px">
-	<div class="container col-lg-10" style="background-color:rgba(255,255,255,0.95)">
+<div class="d-flex justify-content-center container-main">
+	<div class="container col-lg-10 bg-white">
 		<section class="my-5">
-			<h2 class="my-4 text-center cyan-text">Upload Your Favorite Song!</h2>
+			<h2 class="my-4 text-center cyan-text display-4">Upload Your Favorite Song!</h2>
 			<form enctype="multipart/form-data" method="post">
 				<div>
 				    <label for="songfile" class="w-100">

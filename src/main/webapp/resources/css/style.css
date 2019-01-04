@@ -52,3 +52,13 @@ body {
 	background: linear-gradient(to right, rgb(1,176,207) 0%,rgb(62,177,206) 16%,rgb(90,191,219) 33%,rgb(170,206,222) 50%,rgb(236,217,221) 65%,rgb(236,217,221) 79%,rgb(221,117,143) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01b0cf', endColorstr='#dd758f',GradientType=1 ); /* IE6-9 */
 }
+
+.container-main {
+	padding-top:40px;
+	padding-bottom:120px;
+	height:100%;
+}
+
+.bg-white {
+	background-color:white;
+}

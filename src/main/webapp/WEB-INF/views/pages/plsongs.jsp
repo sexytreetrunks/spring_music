@@ -3,8 +3,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="../includes/header.jsp" %>
 
-<div class="d-flex justify-content-center" style="padding-top:40px">
-<div class="container col-lg-9" style="background-color:white">
+<div class="container-fluid justify-content-center container-main">
+<div class="container col-lg-9 bg-white">
 <section>
 	<div class="d-flex justify-content-center my-5">
 		<div>

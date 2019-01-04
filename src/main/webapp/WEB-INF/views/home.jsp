@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@include file="includes/header.jsp" %>
 <style>
 h1 {
@@ -53,8 +52,8 @@ h5 {
 		<!-- Full Page Intro -->
 	</c:when>
 	<c:otherwise>
-		<div class="d-flex justify-content-center" style="padding-top:40px">
-		<div class="container col-lg-9" style="background-color:rgba(255,255,255,0.95)">
+		<div class="d-flex justify-content-center">
+		<div class="container col-lg-9 bg-white container-main">
 			<!-- Section: Blog v.1 -->
 			<section class="my-5 wow fadeInDown">
 			
